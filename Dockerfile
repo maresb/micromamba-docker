@@ -28,7 +28,7 @@ COPY --from=stage1 /tmp/bin/micromamba "$MAMBA_EXE"
 
 RUN echo "source _activate_current_env.sh" >> ~/.bashrc && \
     echo "source _activate_current_env.sh" >> /etc/skel/.bashrc && \
-    useradd -ms /bin/bash micromamba && \
+    useradd -ms /bin/bash "$MAMBA_USER" && \
     mkdir -p "$MAMBA_ROOT_PREFIX" && \
     chmod -R a+rwx "$MAMBA_ROOT_PREFIX" "/home"
 
