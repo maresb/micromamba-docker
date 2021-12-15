@@ -111,7 +111,7 @@ faketty() {
     input="
         ! which python  \n
         MAMBA_SKIP_ACTIVATE=0  \n
-        su micromamba  \n
+        su "$MAMBA_USER"  \n
             python --version  \n
             exit  \n
         exit  \n
