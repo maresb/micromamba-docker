@@ -60,7 +60,9 @@ done
 sed -i.bak  "s%^ARG VERSION=.*$%ARG VERSION=${VERSION}%" "${SCRIPT_DIR}/Dockerfile"
 rm "${SCRIPT_DIR}/Dockerfile.bak"
 
-sed -i.bak "s%mambaorg/micromamba:.*$%mambaorg/micromamba:${VERSION}%" "${SCRIPT_DIR}/README.md"
+# "[^\`@\r\n-]" matches any character except `, @, newline, or -.
+# Note that - must come at the end, otherwise it's falsely interpreted as a range specifier.
+sed -i.bak "s%mambaorg/micromamba:[^\`@\r\n-]*$%mambaorg/micromamba:${VERSION}%g" "${SCRIPT_DIR}/README.md"
 rm "${SCRIPT_DIR}/README.md.bak"
 
 if [ "$COMMIT" = "TRUE" ]; then
