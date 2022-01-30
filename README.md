@@ -2,7 +2,7 @@
 
 [Micromamba](https://github.com/mamba-org/mamba#micromamba) for fast building of small [conda](https://docs.conda.io/)-based containers.
 
-Images available on Dockerhub at [mambaorg/micromamba](https://hub.docker.com/r/mambaorg/micromamba). Source code on GitHub at [mamba-org/micromamba-docker](https://github.com/mamba-org/micromamba-docker/).
+Images available on Docker Hub at [mambaorg/micromamba](https://hub.docker.com/r/mambaorg/micromamba). Source code on GitHub at [mamba-org/micromamba-docker](https://github.com/mamba-org/micromamba-docker/).
 
 "This is amazing. I switched CI for my projects to micromamba, and compared to using a miniconda docker image, this reduced build times more than 2x" -- A new micromamba-docker user
 
@@ -19,15 +19,18 @@ When a commit pushed to the `main` branch of
 [mamba-org/micromamba-docker](https://github.com/mamba-org/micromamba-docker/)
 or when a new release of `micromamba` binaries are available on
 [conda-forge](https://anaconda.org/conda-forge/micromamba),
-new docker images are built and pushed to dockerhub. Each image is tagged with
+new docker images are built and pushed to Docker Hub. Each image is tagged with
 the version of `micromamba` it contains and these tags will start with a
 number. Images are also tagged with `git-<HASH>` where `<HASH>` is the first
 7 characters of the git commit hash from the
 [mamba-org/micromamba-docker](https://github.com/mamba-org/micromamba-docker/)
 git repository.
 
-For reproducible image builds, best practice is for Dockerfile `FROM`
-commands to reference the image's sha256 digest and not use tags.
+For reproducible image builds, best practice for Dockerfile `FROM` commands is to use
+tags which uniquely identify the image, which in our case have the form
+`mambaorg/micromamba:0.20.0-git-abc1234`. Even better is to reference the sha256 digest
+with `mambaorg/micromamba:0.20.0-git-abc1234@sha256:5678abcd...`. The latest tags and
+digests can be found on [Docker Hub](https://hub.docker.com/r/mambaorg/micromamba/tags).
 
 ## Quick start
 
