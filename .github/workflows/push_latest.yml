@@ -72,6 +72,7 @@ jobs:
         tags: |
           mambaorg/micromamba:git-${{ steps.short_hash.outputs.sha_short }}
           mambaorg/micromamba:${{ steps.check_version.outputs.latest_version }}
+          mambaorg/micromamba:${{ steps.check_version.outputs.latest_version }}-git-${{ steps.short_hash.outputs.sha_short }}
           mambaorg/micromamba:latest
       if: steps.check_version.outputs.do_build == 'True'
     - name: Image digest
